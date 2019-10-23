@@ -22,7 +22,7 @@ class SignUp extends Component{
         this.setState({
             [name]:value
         })
-        console.log(this.state)
+        // console.log(this.state)
     }
 
     handleSubmit= async event=>{
