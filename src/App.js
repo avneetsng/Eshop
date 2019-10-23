@@ -1,6 +1,6 @@
 // Importing React 
 import React from 'react';
-import {Route , Switch} from 'react-router-dom'
+import {Route , Switch,Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 // Importing the css file
 import './App.css';
@@ -47,7 +47,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Homepage}/>
           <Route  path='/shop' component={Shop}/>
-          <Route path='/signin' component={SignInAndSignUp}/>
+          <Route  exact path='/signin' render={()=>this.props.currentUser? <Redirect to='/'/> : <SignInAndSignUp/>}/>
         </Switch>
         
       </div>
@@ -55,8 +55,12 @@ class App extends React.Component {
   }
 }
 
+const mapStateToProps=state=>({
+  currentUser:state.user.currentUser
+})
+
 const mapDispatchToProps=dispatch=>({
   setCurrentUser:user=>dispatch(setCurrentUser(user))
 })
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
