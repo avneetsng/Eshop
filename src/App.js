@@ -26,7 +26,7 @@ class App extends React.Component {
             id:userAuth.uid,
             ...snapshot.data()
           })
-          alert(`Welcome ${snapshot.data().displayName}`)
+          
         })
       }
       else{
