@@ -25,7 +25,7 @@
     &:hover{
       .image{
         opacity :0.8;
-        filter:grayscale(1);
+        filter:blur(1px);
         
       }
 
